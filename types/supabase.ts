@@ -40,14 +40,17 @@ export interface Database {
         Row: {
           id: number
           name: string
+          raw_score: string | null
         }
         Insert: {
           id?: never
           name: string
+          raw_score?: string | null
         }
         Update: {
           id?: never
           name?: string
+          raw_score?: string | null
         }
         Relationships: []
       }

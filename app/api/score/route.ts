@@ -7,15 +7,13 @@ import "next"
 export async function POST(request: Request) {
   const { phone, score } = await request.json();
 
-  let updatedString = score.replace(/^Score:\s*/, '');
-
   const supabase = createRouteHandlerClient<Database>({ cookies });
 
   const { data: userInfo } = await supabase
     .from("user").select("*").eq("phone", phone).single()
 
     const { data: scoreInfo } = await supabase
-    .from("resulttype").select("*").eq("name", updatedString).single()
+    .from("resulttype").select("*").eq("raw_score", score).single()
 
   const { data: newScore } = await supabase
     .from("scores").insert({ userid: userInfo?.id, resulttypeid: scoreInfo?.id, createddate: new Date().toJSON() })
