@@ -103,14 +103,17 @@ export interface Database {
         Row: {
           id: number
           name: string
+          phone: string | null
         }
         Insert: {
           id?: never
           name: string
+          phone?: string | null
         }
         Update: {
           id?: never
           name?: string
+          phone?: string | null
         }
         Relationships: []
       }
