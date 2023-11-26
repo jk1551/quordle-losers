@@ -7,6 +7,9 @@ import "next"
 export async function POST(request: Request) {
   const { phone, score } = await request.json();
 
+  console.log(phone)
+  console.log(score)
+
   const supabase = createRouteHandlerClient<Database>({ cookies });
 
   const { data: userInfo } = await supabase
